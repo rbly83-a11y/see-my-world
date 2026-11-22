@@ -27,7 +27,7 @@ automated tests*, *verified against a live runtime* — is maintained in
 | `docs/architecture/` | The AI Development Organization plan and the Stage 02 requirements package (Core MVP PRD, Meridian prototype requirements, scope exclusion list) — proposals, not enacted scope |
 | `docs/decisions/` | The amendment registers (the project's change record) and the Phase Zero founder-decision register — 44 open items, positions recorded, none decided by anyone but the Founder |
 | `docs/verification/` | The development-status document and the Phase Zero audit deliverables, including the recovered-tails verification |
-| `world-forge/` | WORLD FORGE — the development factory. `src/`, `tests/`, `public/` (Founder Dashboard), `config/` (24 specialist definitions). Verified baseline: v2.3 |
+| `world-forge/` | WORLD FORGE — the development factory. `src/`, `tests/`, `public/` (Founder Dashboard), `config/` (24 specialist definitions), `integration/` (opt-in live Docker acceptance harnesses). Verified baseline: v3.6 |
 | `apps/see-my-world/` | The product application will live here. Currently an honest placeholder: greenfield |
 | `.github/workflows/` | CI — the WORLD FORGE test suite runs on every push |
 
@@ -50,7 +50,14 @@ automated tests*, *verified against a live runtime* — is maintained in
   Continuation 28 §§375–380) is **not** included: its verification is
   complete and favourable, but its acceptance as source awaits the
   Founder's disposition (see `docs/verification/TAILS-VERIFICATION.md`).
-- WORLD FORGE v2.4 (container-ownership verification) is reported to exist
-  in subsequent development work. Until it is received and reconciled
-  against v2.3's 153 passing tests, **v2.3 remains the verified baseline**
-  in this repository.
+- WORLD FORGE **v3.6** was received and reconciled against v2.3 on
+  21 November 2026: nothing from v2.3 was removed, the full 2.4–3.6 line
+  (container-ownership verification, lease-to-runner binding, startup
+  acknowledgment, live-Docker acceptance harnesses, verified-stop
+  conflict evidence) is present, and the complete suite was run and
+  confirmed at **200/200 tests passing**. v3.6 is the verified baseline
+  in this repository; v2.3 is superseded and retained in the record
+  (see `docs/product-bible/sources/DEVELOPMENT-CONTINUATION-27-WORLD-FORGE-V2.3.md`).
+  Live Docker behaviour remains unverified — the acceptance harnesses
+  are included but have not been run, there being no Docker daemon in
+  the verification environment.
