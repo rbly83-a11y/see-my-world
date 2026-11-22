@@ -28,24 +28,32 @@ available to check them against. 44 founder decisions are open
 
 | Tier | Status |
 | --- | --- |
-| Implemented | **v2.3 prototype**: task management, 24 specialist definitions, audit records, review workflows, GitHub evidence retrieval, execution controller and supervisor, cancellation requests and processing, and cancellation crash-recovery inspection (`inspectCancellationRecovery`). Zero external dependencies; Node ≥ 22.13 built-ins only. The v1.1 predecessor is bundled in-tree for reference. |
-| Passed automated tests | **153 of 153, 0 failures** — the complete suite, including the 2 new crash-recovery tests. Verified by direct execution on 21 November 2026 (Node v24.22.1), not taken from the delivery report. The demo command (`npm run demo`) also ran clean. The recovery inspector's source was read and confirmed read-only in behaviour: it deletes no claims, releases no leases, and terminates no containers; unresolved claims are flagged `MANUAL_RECONCILIATION_REQUIRED`. |
-| Verified against a live runtime | **Nothing yet.** Docker is not available in the verification environment, so live container behaviour — including crash recovery against a real daemon — is unproven. The automated tests inject container inspection. Also outstanding: authenticated operator identities, AI coding-provider integration, and independent acceptance testing. |
+| Implemented | **v3.6 prototype**: task management, 24 specialist definitions, audit records, review workflows, GitHub evidence retrieval, execution controller and supervisor, cancellation requests and processing, cancellation crash-recovery inspection (`inspectCancellationRecovery`), **container-ownership verification**, runner ownership labels, lease-to-runner binding, read-only lifecycle evidence, the mandatory startup-acknowledgment gate, cancellation/completion race handling, and verified-stop conflict evidence — plus the opt-in live Docker acceptance harnesses under `integration/`. Zero external dependencies; Node ≥ 22.13 built-ins only. The v1.1 predecessor is bundled in-tree for reference. |
+| Passed automated tests | **200 of 200, 0 failures** — the complete suite. The v2.3 suite's 153 tests are preserved in full (no v2.3 file removed; 47 tests added across the 2.4–3.6 line). Verified by direct execution on 21 November 2026 (Node v24.22.1), not taken from any delivery report. The demo command (`npm run demo`) also ran clean. The recovery inspector's source was read and confirmed read-only in behaviour: it deletes no claims, releases no leases, and terminates no containers; unresolved claims are flagged `MANUAL_RECONCILIATION_REQUIRED`. |
+| Verified against a live runtime | **Nothing yet.** Docker is not available in the verification environment, so live container behaviour is unproven. The live acceptance harnesses (`npm run test:docker-live`, `test:docker-live-cancellation`) are implemented but have not been run — they require a Docker daemon and a locally pinned image, and the project's own documentation states they were not run in its build environment either. The automated tests simulate or inject container behaviour. Also outstanding: authenticated operator identities, AI coding-provider integration, and independent acceptance testing. |
 
-**Version discipline:** WORLD FORGE **v2.4** (trusted container-ownership
-verification) is reported to exist in subsequent development work but has
-not been received into this record. v2.3 is the verified baseline of this
-repository until v2.4 is reconciled against it and all 153 tests are
-confirmed preserved. No version is promoted on a report alone.
+**Version discipline:** v3.6 was received on 21 November 2026 and
+reconciled against v2.3 before promotion — file inventory compared
+(nothing removed), the version lineage read in its own README
+(v2.4 ownership verification → v3.6 verified-stop conflict evidence),
+and the full suite executed. **No version is promoted on a report
+alone.** v2.3 is superseded; its record stands in
+`docs/product-bible/sources/DEVELOPMENT-CONTINUATION-27-WORLD-FORGE-V2.3.md`.
 
 ## 3. What happens next (in dependency order)
 
-1. **Connect this repository to GitHub** (private; Founder authorization)
-   and make it the single source of truth.
-2. **Reconcile WORLD FORGE v2.4** against v2.3; verify the 153-test floor.
-3. **First controlled engineering assignment:** integrate trusted Docker
-   ownership labels into the runner and cancellation worker, with
-   end-to-end tests — the step that begins the transition from verified
-   components to an operational development system.
-4. Product work begins only through the Stage 02 scope package and the
+1. **Repository established on GitHub** (private, under the Founder's
+   account) as the single source of truth; contents seeded by verified
+   upload and read back.
+2. **CI verification:** the GitHub Actions workflow must run the WORLD
+   FORGE suite green on the repository itself — the local 200/200 is a
+   baseline, not a CI result.
+3. **Clean-clone acceptance:** retrieve the repository into a fresh
+   environment, run WORLD FORGE from the clone alone, and confirm the
+   Product Bible structure — before any engineering assignment is
+   accepted as repository-based work.
+4. **Live Docker acceptance** on a disposable host (the `integration/`
+   harnesses), and then the first controlled engineering assignment
+   through ATLAS.
+5. Product work begins only through the Stage 02 scope package and the
    Founder's decisions on the items that block it.
