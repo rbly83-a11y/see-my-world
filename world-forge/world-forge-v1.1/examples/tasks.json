@@ -1,0 +1,7 @@
+[
+ {"id":"WF-001","title":"Canon source register","owner":"LEDGER","reviewer":"VERITY","dependencies":[],"status":"READY","risk":"MEDIUM","canonChange":false},
+ {"id":"WF-002","title":"Repository inventory","owner":"FORGE","reviewer":"VERITY","dependencies":[],"status":"READY","risk":"MEDIUM"},
+ {"id":"WF-003","title":"Test baseline","owner":"VERITY","reviewer":"CIPHER","dependencies":["WF-002"],"status":"READY","risk":"MEDIUM"},
+ {"id":"WF-004","title":"Threat model","owner":"CIPHER","reviewer":"VERITY","dependencies":["WF-002"],"status":"READY","risk":"HIGH","privacyBoundary":true},
+ {"id":"WF-005","title":"MVP acceptance criteria","owner":"SAGE","reviewer":"LEDGER","dependencies":["WF-001","WF-002"],"status":"READY","risk":"MEDIUM"}
+]
