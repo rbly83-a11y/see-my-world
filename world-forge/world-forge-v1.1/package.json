@@ -1,0 +1,15 @@
+{
+  "name": "world-forge-v1.1",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "test": "node --disable-warning=ExperimentalWarning --test",
+    "demo": "node --disable-warning=ExperimentalWarning src/cli.js init ./local/store.db examples/tasks.json",
+    "serve": "node --disable-warning=ExperimentalWarning src/server.js local/store.db",
+    "github:evidence": "node src/github-cli.js"
+  }
+}
