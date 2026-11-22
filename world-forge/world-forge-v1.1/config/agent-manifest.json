@@ -1,0 +1,180 @@
+{
+  "contractVersion": "1.1-proposed",
+  "source": "SEE MY WORLD development team plan; not deployed agents",
+  "agents": [
+    {
+      "id": "ATLAS",
+      "role": "Operations orchestrator",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "SAGE",
+      "role": "Product architect",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "LEDGER",
+      "role": "Canon registrar",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "FORGE",
+      "role": "Principal software architect",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "CIPHER",
+      "role": "Privacy and security",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "VERITY",
+      "role": "Quality assurance",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "VAULT",
+      "role": "Database engineer",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "CIRCUIT",
+      "role": "Backend and API",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "HARBOR",
+      "role": "Identity and permissions",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "TIDAL",
+      "role": "World intelligence",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "PRISM",
+      "role": "Lens compiler",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "MUSE",
+      "role": "UX and UI",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "CANVAS",
+      "role": "Frontend engineer",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "ACCESS",
+      "role": "Accessibility",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "PULSE",
+      "role": "User research",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "CHRONOS",
+      "role": "Temporal runtime",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "ARCHIVE",
+      "role": "Historical research",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "ECHO",
+      "role": "Memory network",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "STAGE",
+      "role": "Immersive scenes",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "SCHOLAR",
+      "role": "Education",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "LORE",
+      "role": "Literary and licensing",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "SENTINEL",
+      "role": "Trust and moderation",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "BEACON",
+      "role": "DevOps and release",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    },
+    {
+      "id": "MERIDIAN",
+      "role": "Commercialization",
+      "canMerge": false,
+      "canDeploy": false,
+      "canApproveOwnWork": false
+    }
+  ],
+  "defaultPolicy": {
+    "productionAccess": false,
+    "privateUserDataAccess": false,
+    "automaticMerges": false,
+    "automaticDeploys": false
+  }
+}
