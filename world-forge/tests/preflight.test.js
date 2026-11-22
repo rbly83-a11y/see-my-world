@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { prepareExecutionPlan } from '../src/preflight.js';
+const task={id:'WF-ABC',title:'Implement example',owner:'FORGE',dependencies:[],status:'READY',risk:'LOW'};
+const assignment={taskId:task.id,agentId:'FORGE',writablePaths:['src/example.js'],maxAttempts:2,productionAccess:false,secretAccess:false,networkAccess:false};
+test('produces non-executable bounded plan',()=>{const plan=prepareExecutionPlan([task],assignment);assert.equal(plan.mode,'PREFLIGHT_ONLY');assert.equal(plan.executionAuthorized,false);assert.deepEqual(plan.writablePaths,['src/example.js']);});
+test('rejects wrong specialist',()=>assert.throws(()=>prepareExecutionPlan([task],{...assignment,agentId:'ATLAS'}),/not assigned/));
+test('rejects non-ready task',()=>assert.throws(()=>prepareExecutionPlan([{...task,status:'DRAFT'}],assignment),/not ready/));
+test('rejects protected paths',()=>{for(const path of ['.git/config','node_modules/foo','.github/workflows/ci.yml','src//foo','src/./foo','src/%2e%2e/foo'])assert.throws(()=>prepareExecutionPlan([task],{...assignment,writablePaths:[path]}));});
+test('rejects secret and network privileges',()=>{for(const k of ['secretAccess','networkAccess','productionAccess'])assert.throws(()=>prepareExecutionPlan([task],{...assignment,[k]:true}),/Unsafe agent permissions/);});
+test('rejects invalid specialist',()=>assert.throws(()=>prepareExecutionPlan([{...task,owner:'UNKNOWN'}],{...assignment,agentId:'UNKNOWN'}),/Unknown specialist/));

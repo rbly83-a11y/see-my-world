@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {inspectContainer,requestContainerStop} from '../src/supervisor.js';
+const name='world-forge-12345678-1234-1234-1234-123456789abc';
+const obj={Name:'/'+name,Id:'a'.repeat(64),State:{Running:true,Status:'running'}};
+test('inspection reports valid running container',async()=>{const r=await inspectContainer(name,{exec:async()=>({stdout:JSON.stringify(obj)})});assert.equal(r.verified,true);assert.equal(r.running,true)});
+test('inspection rejects unsafe name without invoking Docker',async()=>{await assert.rejects(inspectContainer('other',{exec:async()=>{throw Error('called')}}),/unsafe/)});
+test('inspection fails closed on malformed output',async()=>{const r=await inspectContainer(name,{exec:async()=>({stdout:'{}'})});assert.equal(r.verified,false)});
+test('inspection fails closed on Docker errors',async()=>{const r=await inspectContainer(name,{exec:async()=>{throw Error('offline')}});assert.equal(r.verified,false)});
+test('cancellation verifies absence using independent listing',async()=>{const calls=[];const exec=async(_cmd,args)=>{calls.push(args);if(args[0]==='inspect')return {stdout:JSON.stringify(obj)};if(args[0]==='ps')return {stdout:'other-container\n'};return {stdout:''}};const r=await requestContainerStop(name,{exec});assert.equal(r.confirmed,true);assert.deepEqual(calls.map(x=>x[0]),['inspect','rm','ps'])});
+test('cancellation refuses to confirm if container still listed',async()=>{const exec=async(_cmd,args)=>({stdout:args[0]==='inspect'?JSON.stringify(obj):args[0]==='ps'?name+'\n':''});const r=await requestContainerStop(name,{exec});assert.equal(r.confirmed,false)});
+test('cancellation refuses to confirm if post-check unavailable',async()=>{const exec=async(_cmd,args)=>{if(args[0]==='inspect')return {stdout:JSON.stringify(obj)};if(args[0]==='ps')throw Error('offline');return {stdout:''}};const r=await requestContainerStop(name,{exec});assert.equal(r.confirmed,false)});

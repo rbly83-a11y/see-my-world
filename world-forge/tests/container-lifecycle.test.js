@@ -1,0 +1,17 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {randomUUID,createHash} from 'node:crypto';
+import {inspectExecutionLifecycle} from '../src/container-lifecycle.js';
+const jobId='JOB-'+randomUUID(), token=randomUUID(),name='world-forge-'+randomUUID(), id='a'.repeat(64);
+const lease={job_id:jobId,token,status:'ACTIVE',container_name:name};
+const identity={jobId,leaseToken:token};
+const payload=(running=true,labels=true)=>JSON.stringify({Id:id,Name:'/'+name,State:{Running:running},Config:{Labels:{'world-forge.job-id':labels?jobId:'JOB-'+randomUUID(),'world-forge.lease-sha256':createHash('sha256').update(token).digest('hex')}}});
+const mock=(inspection,listing='')=>async(_bin,args)=>args[0]==='inspect'?inspection instanceof Error?Promise.reject(inspection):{stdout:inspection}:{stdout:listing};
+test('reports running only with verified ownership',async()=>{const x=await inspectExecutionLifecycle(lease,identity,{exec:mock(payload())});assert.equal(x.state,'RUNNING');assert.equal(x.containerId,id);});
+test('reports created or stopped without claiming completion',async()=>{const x=await inspectExecutionLifecycle(lease,identity,{exec:mock(payload(false))});assert.equal(x.state,'CREATED_OR_STOPPED');});
+test('rejects ownership mismatch even if container exists',async()=>{const x=await inspectExecutionLifecycle(lease,identity,{exec:mock(payload(true,false))});assert.equal(x.state,'UNVERIFIED');assert.equal(x.reason,'OWNERSHIP_MISMATCH');});
+test('responsive Docker listing can establish absence, not cleanup',async()=>{const x=await inspectExecutionLifecycle(lease,identity,{exec:mock(new Error('not found'),'')});assert.equal(x.state,'ABSENT');assert.equal(x.verified,true);});
+test('daemon failure never becomes absence',async()=>{const x=await inspectExecutionLifecycle(lease,identity,{exec:async()=>{throw Error('daemon unavailable')}});assert.equal(x.state,'UNVERIFIED');});
+test('present but uninspectable remains unverified',async()=>{const x=await inspectExecutionLifecycle(lease,identity,{exec:mock(new Error('inspect failure'),id+' '+name+'\n')});assert.equal(x.reason,'PRESENT_BUT_UNINSPECTABLE');});
+test('no registered container is not Docker creation proof',async()=>{const x=await inspectExecutionLifecycle({...lease,status:'CLAIMED',container_name:null},identity,{exec:async()=>{throw Error('should not call')}});assert.equal(x.state,'CLAIMED');assert.equal(x.verified,false);});
+test('rejects mismatched lease identity',async()=>{await assert.rejects(inspectExecutionLifecycle(lease,{...identity,leaseToken:randomUUID()}),/does not match/);});

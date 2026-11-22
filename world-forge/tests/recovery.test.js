@@ -1,0 +1,15 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {mkdtemp,mkdir,writeFile,readFile,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {Store} from '../src/store.js';
+import {JobLedger,snapshotArtifacts,inventoryArtifacts,attestSourceRevision} from '../src/jobs.js';
+const SHA='a'.repeat(40);
+async function setup(){const dir=await mkdtemp(join(tmpdir(),'wf14-'));const store=new Store(join(dir,'db.sqlite'));const task={id:'WF-200',title:'Recovery',owner:'FORGE',dependencies:[],status:'READY',risk:'LOW'};store.initialize([task]);return {dir,store,task,ledger:new JobLedger(store),async close(){store.close();await rm(dir,{recursive:true,force:true})}}}
+test('crashed RUNNING jobs require cleanup confirmation and become INTERRUPTED',async()=>{const x=await setup();try{const assignment={taskId:x.task.id,agentId:'FORGE',writablePaths:['src/a.js'],productionAccess:false,secretAccess:false,networkAccess:false,maxAttempts:1};const j=x.ledger.enqueue({tasks:[x.task],assignment,sourceSha:SHA});x.store.db.prepare('UPDATE execution_jobs SET status=? WHERE id=?').run('RUNNING',j.id);assert.throws(()=>x.ledger.recoverInterrupted(),/confirmation/);assert.equal(x.ledger.get(j.id).status,'RUNNING');assert.deepEqual(x.ledger.recoverInterrupted({confirmedContainersStopped:true}),[j.id]);assert.equal(x.ledger.get(j.id).status,'INTERRUPTED');assert.deepEqual(x.ledger.recoverInterrupted({confirmedContainersStopped:true}),[]);assert.ok(x.store.verify()>0);}finally{await x.close()}});
+test('artifact snapshots have matching verified hashes',async()=>{const x=await setup();try{const source=join(x.dir,'source');await mkdir(source);await writeFile(join(source,'a.txt'),'safe');const snap=await snapshotArtifacts(source,join(x.dir,'sealed'));assert.equal(snap.manifest.manifestSha256,(await inventoryArtifacts(snap.directory)).manifestSha256);await writeFile(join(source,'a.txt'),'changed');assert.equal(await readFile(join(snap.directory,'a.txt'),'utf8'),'safe');}finally{await x.close()}});
+test('snapshot refuses overlapping directories',async()=>{const x=await setup();try{const source=join(x.dir,'source');await mkdir(source);await assert.rejects(()=>snapshotArtifacts(source,join(source,'nested')),/disjoint/);}finally{await x.close()}});
+test('source attestation rejects invalid expected SHA',async()=>{const x=await setup();try{await assert.rejects(()=>attestSourceRevision(x.dir,'invalid'),/SHA/);}finally{await x.close()}});
+test('source attestation accepts exact clean root with injected git',async()=>{const x=await setup();try{const git=async(_bin,args)=>({stdout:args[0]==='status'?'':args[1]==='--show-toplevel'?x.dir:SHA});const a=await attestSourceRevision(x.dir,SHA,{git});assert.equal(a.sha,SHA);}finally{await x.close()}});
+test('source attestation refuses dirty checkout',async()=>{const x=await setup();try{const git=async(_bin,args)=>({stdout:args[0]==='status'?' M file.js':args[1]==='--show-toplevel'?x.dir:SHA});await assert.rejects(()=>attestSourceRevision(x.dir,SHA,{git}),/uncommitted/);}finally{await x.close()}});

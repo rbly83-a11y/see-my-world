@@ -1,0 +1,16 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { validateGitHubEvidence,constantTimeTokenMatch } from '../src/evidence.js';
+import { validateAgentAssignment } from '../src/agent-policy.js';
+const sha='a'.repeat(40);
+const fixture=()=>({source:'github',taskId:'WF-001',repository:'example/world',pullRequest:5,headSha:sha,testedSha:sha,checks:[{name:'CI',conclusion:'success',headSha:sha}]});
+test('accepts structurally valid unverified fixture',()=>assert.equal(validateGitHubEvidence(fixture(),{id:'WF-001'}).provenance,'UNVERIFIED_FIXTURE'));
+test('rejects different tested revision',()=>assert.throws(()=>validateGitHubEvidence({...fixture(),testedSha:'b'.repeat(40)})));
+test('rejects unsuccessful check',()=>assert.throws(()=>validateGitHubEvidence({...fixture(),checks:[{name:'CI',conclusion:'failure',headSha:sha}]})));
+test('rejects wrong task',()=>assert.throws(()=>validateGitHubEvidence(fixture(),{id:'WF-002'})));
+test('rejects empty checks',()=>assert.throws(()=>validateGitHubEvidence({...fixture(),checks:[]})));
+test('token comparison',()=>{assert.equal(constantTimeTokenMatch('abc','abc'),true);assert.equal(constantTimeTokenMatch('bad','good'),false)});
+const assignment=()=>({taskId:'WF-001',agentId:'LEDGER',writablePaths:['docs/canon'],productionAccess:false,secretAccess:false,networkAccess:false,maxAttempts:2});
+test('validates safe agent assignment',()=>assert.equal(validateAgentAssignment(assignment()).agentId,'LEDGER'));
+test('rejects traversal',()=>assert.throws(()=>validateAgentAssignment({...assignment(),writablePaths:['../secrets']})));
+test('rejects production access',()=>assert.throws(()=>validateAgentAssignment({...assignment(),productionAccess:true})));

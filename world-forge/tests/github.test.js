@@ -1,0 +1,15 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {fetchPullRequestEvidence} from '../src/github.js';
+const sha='a'.repeat(40);
+const goodPR={state:'open',head:{sha,repo:{full_name:'acme/world'}},base:{repo:{full_name:'acme/world'}}};
+const goodChecks={total_count:1,check_runs:[{name:'test',head_sha:sha,status:'completed',conclusion:'success',completed_at:'2026-01-01T00:00:00Z'}]};
+const fixture=(pr=goodPR,checks=goodChecks)=>async url=>({ok:true,json:async()=>url.includes('/pulls/')?pr:checks});
+const args={repository:'acme/world',pullRequest:2,taskId:'WF-001',token:'fake',requiredChecks:['test']};
+test('read-only GitHub evidence binds PR head and successful required checks',async()=>{const e=await fetchPullRequestEvidence({...args,fetchImpl:fixture()});assert.equal(e.provenance,'GITHUB_API_READ_ONLY');assert.equal(e.commitSha,sha);});
+test('rejects failed required checks',async()=>{await assert.rejects(fetchPullRequestEvidence({...args,fetchImpl:fixture(goodPR,{total_count:1,check_runs:[{...goodChecks.check_runs[0],conclusion:'failure'}]})}),/not successful/);});
+test('rejects external forks',async()=>{await assert.rejects(fetchPullRequestEvidence({...args,fetchImpl:fixture({...goodPR,head:{...goodPR.head,repo:{full_name:'other/fork'}}})}),/not eligible/);});
+test('rejects missing required check policy',async()=>{await assert.rejects(fetchPullRequestEvidence({...args,requiredChecks:[],fetchImpl:fixture()}),/Required checks/);});
+test('rejects incomplete pagination',async()=>{await assert.rejects(fetchPullRequestEvidence({...args,fetchImpl:fixture(goodPR,{...goodChecks,total_count:101})}),/Incomplete/);});
+test('rejects invalid repository before network',async()=>{await assert.rejects(fetchPullRequestEvidence({...args,repository:'https://evil.test/'}),/Invalid request/);});
+test('rejects unsuccessful HTTP responses',async()=>{await assert.rejects(fetchPullRequestEvidence({...args,fetchImpl:async()=>({ok:false,status:403})}),/403/);});
