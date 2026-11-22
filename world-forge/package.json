@@ -1,0 +1,18 @@
+{
+  "name": "world-forge-v3.6",
+  "version": "3.6.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "test": "node --disable-warning=ExperimentalWarning --test",
+    "demo": "node --disable-warning=ExperimentalWarning src/cli.js init ./local/store.db examples/tasks.json",
+    "serve": "node --disable-warning=ExperimentalWarning src/server.js local/store.db",
+    "github:evidence": "node src/github-cli.js",
+    "runner:check": "node src/runner-cli.js",
+    "test:docker-live": "node integration/docker-live.mjs",
+    "test:docker-live-cancellation": "node integration/docker-live-cancellation.mjs"
+  }
+}
