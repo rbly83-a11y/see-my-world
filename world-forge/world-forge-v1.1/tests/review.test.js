@@ -1,0 +1,10 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {assessReviewEvidence,fetchReviewAssessment} from '../src/review.js';
+const sha='a'.repeat(40),pr={state:'open',head:{sha},user:{login:'builder'}};
+const review=(login,state='APPROVED',commit_id=sha,submitted_at='2026-11-21T00:00:00Z')=>({user:{login},state,commit_id,submitted_at});
+test('accepts distinct non-author review on exact SHA',()=>{const r=assessReviewEvidence({pr,reviews:[review('alice')],headSha:sha});assert.equal(r.advisoryPass,true)});
+test('excludes author and stale revision',()=>{const r=assessReviewEvidence({pr,reviews:[review('builder'),review('alice','APPROVED','b'.repeat(40))],headSha:sha});assert.equal(r.advisoryPass,false)});
+test('latest change request blocks',()=>{const r=assessReviewEvidence({pr,reviews:[review('alice'),review('alice','CHANGES_REQUESTED',sha,'2026-11-22T00:00:00Z')],headSha:sha});assert.equal(r.advisoryPass,false)});
+test('rejects mismatched PR SHA',()=>assert.throws(()=>assessReviewEvidence({pr,reviews:[],headSha:'b'.repeat(40)})));
+test('fetches review fixtures read-only',async()=>{const calls=[];const fetchImpl=async(url,opts)=>{calls.push(opts.method);return {ok:true,json:async()=>url.includes('/reviews?')?[review('alice')]:pr}};const r=await fetchReviewAssessment({repository:'org/repo',pullRequest:2,token:'fixture',headSha:sha,fetchImpl});assert.equal(r.advisoryPass,true);assert.deepEqual(calls,['GET','GET'])});
+test('refuses incomplete review pagination',async()=>{const fetchImpl=async(url)=>({ok:true,json:async()=>url.includes('/reviews?')?Array.from({length:100},()=>review('alice')):pr});await assert.rejects(fetchReviewAssessment({repository:'org/repo',pullRequest:2,token:'fixture',headSha:sha,fetchImpl}),/pagination/)});
