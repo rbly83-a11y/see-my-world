@@ -1,6 +1,8 @@
 # SEE MY WORLD — Development Status
 
-**As of:** 21 November 2026
+**As of:** 23 November 2026 (corrected — the 21 November version's
+greenfield claims for the product were superseded by the Stage 02
+acceptance recorded that same evening and are replaced below)
 **Rule of this document:** three claims are kept separate at all times —
 what has been **implemented**, what has **passed automated tests**, and what
 has been **verified against a live runtime**. A claim moves tiers only with
@@ -12,9 +14,9 @@ evidence. This document is updated whenever a tier changes.
 
 | Tier | Status |
 | --- | --- |
-| Implemented | **Nothing.** The product is greenfield: no repository code, database, or deployment existed before this repository, and `apps/see-my-world/` is a placeholder. |
-| Passed automated tests | **Nothing executed.** The specification proposes 2,296 acceptance cases across ten suites; none are written or run. Both readiness gates (Replayable World, Meridian) stand at 0/10. |
-| Verified against a live runtime | **Nothing.** No pilot, no live system. |
+| Implemented | **The Stage 02 vertical slice** in `apps/see-my-world/`: an empty, owner-controlled World; the testimony-v1 correction surface; named-recipient Invitation sharing with server-side bounded Perspectives; revocation and expiry; logical deletion. Implemented under the Founder's authorization (register A-43), remediated after independent audit (A-47), **accepted by the Founder (A-48)** and **frozen as a baseline (A-49)**. Accepted application commit `ba2a1fca94f0defa6afa4076c0b003a1675f5996`. Everything beyond the slice remains specification — no production system, no live owner data. |
+| Passed automated tests | **The slice's acceptance suite: 21 of 21**, executed by the operator and independently reproduced by the Founder on his own runtime (A-48). A single Founder-authorized GitHub Actions backend-evidence run re-executed the canonical suite plus supplementary contract tests: **31 of 31** (run 45099666648, 22 November 2026); the evidence artifact is preserved in the project archive (A-66/A-67). The Bible's proposed acceptance suites (2,296 cases) remain **proposed** — not written, not run. |
+| Verified against a live runtime | **Nothing production.** The slice executes under Node.js locally for test purposes. Live Docker acceptance remains unverified (no Docker daemon in the verification environment). No pilot, no deployment. Production release is **not authorized**. |
 
 Specification state (for contrast, never to be confused with the tiers
 above): Product Bible **Edition 1.4** is the baseline of record — 120
@@ -40,20 +42,35 @@ and the full suite executed. **No version is promoted on a report
 alone.** v2.3 is superseded; its record stands in
 `docs/product-bible/sources/DEVELOPMENT-CONTINUATION-27-WORLD-FORGE-V2.3.md`.
 
-## 3. What happens next (in dependency order)
+## 3. Stage 03 — Platform Experience Foundation
 
-1. **Repository established on GitHub** (private, under the Founder's
-   account) as the single source of truth; contents seeded by verified
-   upload and read back.
-2. **CI verification:** the GitHub Actions workflow must run the WORLD
-   FORGE suite green on the repository itself — the local 200/200 is a
-   baseline, not a CI result.
-3. **Clean-clone acceptance:** retrieve the repository into a fresh
-   environment, run WORLD FORGE from the clone alone, and confirm the
-   Product Bible structure — before any engineering assignment is
-   accepted as repository-based work.
-4. **Live Docker acceptance** on a disposable host (the `integration/`
-   harnesses), and then the first controlled engineering assignment
-   through ATLAS.
-5. Product work begins only through the Stage 02 scope package and the
-   Founder's decisions on the items that block it.
+Chartered by the Founder (A-51) as a gated program (G1–G6) over the frozen
+Stage 02 foundation. Current gate state:
+
+- **G1 (experience architecture): ACCEPTED** for its bounded
+  discovery-and-architecture scope (A-57). Deliverables D03-01…D03-04 are
+  filed in `docs/stage-03/`.
+- **G2 (wireframes): not assigned.** D03-05/D03-06 have not been produced.
+- **G3 (design system): design development authorized by the Founder
+  (A-70).** A G3 design package (D03-07, D03-08, D03-09 and supporting
+  volumes) with its seven source design boards is filed in
+  `docs/stage-03/g3-package/` and `docs/stage-03/design-boards/` at
+  evidence level E1. **G3 gate acceptance is pending** the Founder's
+  itemized decisions; the package's conformance annex flags depicted
+  scope the charter does not adopt (a public-audience lens, a creator
+  marketplace, a social feed), which remains **not adopted**.
+- Production deployment, live owner-data compilation, and any change to
+  the Stage 02 privacy boundary remain **not authorized**.
+
+## 4. What happens next (in dependency order)
+
+1. **Live Docker acceptance** on a disposable host (the `integration/`
+   harnesses) — outstanding since the baseline; no tier above moves
+   without it.
+2. **Founder decisions:** the 44-item queue
+   (`docs/decisions/FOUNDER_DECISION_REGISTER.md`), including D-34,
+   Q-09, and Q-21 — open, and resolvable by no one else.
+3. **Stage 03 gate decisions:** G2's disposition and the G3 gate decision
+   on the filed package.
+4. Product work beyond the frozen slice begins only through new,
+   explicitly scoped Founder authorization.

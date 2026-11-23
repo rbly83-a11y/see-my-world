@@ -106,3 +106,33 @@ This manifest certifies the **repository baseline**. Stage 02 — the first
 controlled implementation assignment — is authorized only by the
 Founder's acceptance decision on this evidence. Until then, no product
 behaviour is implemented and the application remains greenfield.
+
+---
+
+## Post-baseline addendum — 23 November 2026
+
+The certification above is unchanged and stands as written for revision
+`541e608…`. What has happened since, recorded here so this manifest is
+not mistaken for the current state:
+
+- **Repository visibility:** the repository was made **public** by the
+  Founder's explicit decision (register A-62, 22 November 2026). The
+  "(private)" designation in the header above is historical.
+- **Stage 02 implemented and accepted:** the vertical slice was built
+  under A-43, accepted at A-48, frozen at A-49 (accepted application
+  commit `ba2a1fca94f0defa6afa4076c0b003a1675f5996`), and published to
+  this repository. The "Product application: Greenfield" row in the
+  table above describes the baseline revision only.
+- **Register:** the Edition 1.5 amendment register now runs through
+  **A-72** (`docs/decisions/EDITION-1.5-AMENDMENT-REGISTER.md`).
+- **Stage 03:** charter approved (A-51); G1 package accepted bounded
+  and filed at `83a300f…` (A-57); G3 design package and boards filed
+  23 November 2026 (E1, gate acceptance pending).
+- **Backend evidence:** one Founder-authorized Actions run of the
+  Stage 02 evidence workflow passed 31/31 (run 45099666648); the
+  artifact is preserved in the project archive (A-66/A-67).
+- **Repository HEAD at the opening of the 23 November 2026 publication
+  round:** `e824e90fa4b223321567fba44314adf5c4e6b84e` (36 commits). The
+  round's resulting HEAD is recorded in register A-73.
+- **Live Docker behaviour remains NOT verified**, exactly as the
+  certification above states.
