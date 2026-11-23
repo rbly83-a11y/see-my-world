@@ -22,6 +22,11 @@ automated tests*, *verified against a live runtime* — is maintained in
 
 ## Layout
 
+New here? Start with [docs/MASTER-INDEX.md](docs/MASTER-INDEX.md) — the
+map of everything below — and
+[docs/stage-03/GATE-STATUS.md](docs/stage-03/GATE-STATUS.md) for the
+Stage 03 gate board.
+
 | Path | Contents |
 | --- | --- |
 | `docs/product-bible/` | Product Bible Edition 1.4 (baseline of record) and, under `sources/`, the filed continuations, concept documents, audits, and prior editions it was compiled from |
