@@ -136,3 +136,21 @@ not mistaken for the current state:
   round's resulting HEAD is recorded in register A-73.
 - **Live Docker behaviour remains NOT verified**, exactly as the
   certification above states.
+
+---
+
+## Post-baseline addendum 2 — 23 November 2026 (development pass 4)
+
+- **Register:** the Edition 1.5 amendment register now runs through
+  **A-77**. A-74 completed the repository (local tree re-synced as a
+  verified clone); **A-75** records the Founder's standing mandate for
+  repository development passes within fixed bounds (no gates, no
+  founder decisions, no production); A-76/A-77 record the passes.
+- **Filed since addendum 1:** the complete PARAVEX source corpus
+  (v35, Editions 58/59/60, Persona v3.0/v3.1, both analyses), the two
+  standalone drafts, and `REPOSITORY-INVENTORY.md` in
+  `docs/verification/`.
+- **Verification refresh at `2ca50cd…`:** WORLD FORGE suite 200/200 and
+  Stage 02 acceptance suite 21/21 re-executed from the canonical clone;
+  GitHub Actions WORLD FORGE run #57 at the same commit concluded
+  **Success** (run 45195510417). Live Docker remains NOT verified.
