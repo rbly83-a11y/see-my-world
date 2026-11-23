@@ -9,7 +9,7 @@
 | Gate | Scope | Status | Authority |
 | --- | --- | --- | --- |
 | G1 | Experience architecture | **ACCEPTED** — bounded to discovery and architecture | A-57 (Founder, 22 Nov 2026) |
-| G2 | Wireframe approval | **NOT ASSIGNED** — no work orders issued; D03-05/D03-06 not produced | A-51 execution restriction; A-57 |
+| G2 | Wireframe approval | **NOT ASSIGNED** — no work orders issued; D03-05/D03-06 not produced. Proposed work orders are on file (`G2-WORK-ORDERS-PROPOSED.md`, filed pass 8) and take effect only on the Founder's formal issuance | A-51 execution restriction; A-57 |
 | G3 | Design system approval | **DESIGN FILED (E1) — GATE ACCEPTANCE PENDING** the Founder's itemized decisions | Design development authorized A-70; package filed A-71/A-72 |
 | G4 | Prototype demonstration | NOT STARTED | — |
 | G5 | Validation | NOT STARTED | — |
