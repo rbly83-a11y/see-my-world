@@ -1,10 +1,10 @@
 # Repository Inventory — SEE MY WORLD
 
-**As of commit:** `ebba5f6e5347e6fa862c45f61fc4b123b50724ae` (45 commits on main)
-**Generated:** 23 November 2026, from the canonical local clone (`git ls-files` + working-tree sizes), under register A-75/A-76.
-**Contents:** 202 tracked files, 20,506,790 bytes total.
+**As of commit:** `3e38236bfd5a36ef4e1ef3ff07da2738df3100f5` (48 commits on main)
+**Generated:** 23 November 2026, from the canonical local clone (`git ls-files` + working-tree sizes), under register A-75/A-77 (development pass 4 refresh; supersedes the pass-3 inventory at `ebba5f6…`).
+**Contents:** 203 tracked files, 20,524,276 bytes total.
 
-This inventory certifies the repository's contents at the commit above. The two commits after `1a4bf9c…` (PARAVEX corpus filing, standalone drafts filing) are documentation-only; the executable suites were verified from a clean clone at `1a4bf9c…` on 23 November 2026: WORLD FORGE 200/200, Stage 02 acceptance 21/21.
+Verification at the inventoried commit's parent line: WORLD FORGE suite 200/200 and Stage 02 acceptance suite 21/21 re-executed from the clone at `2ca50cd…` on 23 November 2026; GitHub Actions WORLD FORGE run #57 at `2ca50cd…` concluded Success (run 45195510417). The commits since are documentation-only.
 
 | File | Bytes |
 | --- | ---: |
@@ -32,7 +32,7 @@ This inventory certifies the repository's contents at the commit above. The two 
 | `docs/architecture/SCOPE-EXCLUSION-LIST.md` | 44,793 |
 | `docs/decisions/EDITION-1.3-AMENDMENT-REGISTER.md` | 36,529 |
 | `docs/decisions/EDITION-1.4-AMENDMENT-REGISTER.md` | 43,759 |
-| `docs/decisions/EDITION-1.5-AMENDMENT-REGISTER.md` | 86,109 |
+| `docs/decisions/EDITION-1.5-AMENDMENT-REGISTER.md` | 89,157 |
 | `docs/decisions/FOUNDER_DECISION_REGISTER.md` | 24,991 |
 | `docs/decisions/STAGE-03-CHARTER-A51.md` | 18,356 |
 | `docs/product-bible/SEE-MY-WORLD-Product-Bible-Edition-1.4.md` | 769,512 |
@@ -104,13 +104,14 @@ This inventory certifies the repository's contents at the commit above. The two 
 | `docs/stage-03/g3-package/G3-PACKAGE-REPORT.md` | 11,793 |
 | `docs/stage-03/g3-package/G3-SCREEN-SYSTEMS-AND-FLOWS.md` | 22,175 |
 | `docs/verification/AGENT_ASSIGNMENT_REGISTER.md` | 8,550 |
-| `docs/verification/BASELINE-MANIFEST.md` | 8,685 |
+| `docs/verification/BASELINE-MANIFEST.md` | 9,594 |
 | `docs/verification/CANONICAL_REQUIREMENTS.md` | 9,233 |
 | `docs/verification/DEVELOPMENT-STATUS.md` | 6,575 |
 | `docs/verification/FEATURE_STATUS_INVENTORY.md` | 10,897 |
 | `docs/verification/MASTER_DEVELOPMENT_ROADMAP.md` | 15,841 |
 | `docs/verification/MVP_SCOPE.md` | 12,303 |
 | `docs/verification/PROJECT_STATE_AUDIT.md` | 20,269 |
+| `docs/verification/REPOSITORY-INVENTORY.md` | 13,529 |
 | `docs/verification/SLICE-BUILD-REPORT.md` | 15,152 |
 | `docs/verification/TAILS-VERIFICATION.md` | 24,367 |
 | `docs/verification/TEST_BASELINE.md` | 8,360 |
@@ -211,4 +212,4 @@ This inventory certifies the repository's contents at the commit above. The two 
 | `world-forge/world-forge-v1.1/tests/server.test.js` | 1,345 |
 | `world-forge/world-forge-v1.1/tests/store.test.js` | 2,356 |
 
-Total: **202 files, 20,506,790 bytes** at `ebba5f6e5347…`. This file itself is added in the commit following the one inventoried.
+Total: **203 files, 20,524,276 bytes** at `3e38236bfd5a…`. This file itself is updated in the commit following the one inventoried.
