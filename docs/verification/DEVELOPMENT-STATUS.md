@@ -51,6 +51,8 @@ Stage 02 foundation. Current gate state:
   discovery-and-architecture scope (A-57). Deliverables D03-01…D03-04 are
   filed in `docs/stage-03/`.
 - **G2 (wireframes): not assigned.** D03-05/D03-06 have not been produced.
+  Proposed work orders are on file (`docs/stage-03/G2-WORK-ORDERS-PROPOSED.md`)
+  and take effect only on the Founder's formal issuance.
 - **G3 (design system): design development authorized by the Founder
   (A-70).** A G3 design package (D03-07, D03-08, D03-09 and supporting
   volumes) with its seven source design boards is filed in
