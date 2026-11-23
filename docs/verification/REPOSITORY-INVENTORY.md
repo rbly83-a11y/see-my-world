@@ -1,17 +1,17 @@
 # Repository Inventory — SEE MY WORLD
 
-**As of commit:** `3e38236bfd5a36ef4e1ef3ff07da2738df3100f5` (48 commits on main)
-**Generated:** 23 November 2026, from the canonical local clone (`git ls-files` + working-tree sizes), under register A-75/A-77 (development pass 4 refresh; supersedes the pass-3 inventory at `ebba5f6…`).
-**Contents:** 203 tracked files, 20,524,276 bytes total.
+**As of commit:** `369d02dbe28ca6a35b2d7ee1267b4f036c93c7ae` (54 commits on main)
+**Generated:** 23 November 2026, from the canonical local clone (`git ls-files` + working-tree sizes), under register A-75/A-79 (development pass 6 refresh; supersedes the pass-4 inventory at `3e38236…`).
+**Contents:** 205 tracked files, 20,535,252 bytes total.
 
-Verification at the inventoried commit's parent line: WORLD FORGE suite 200/200 and Stage 02 acceptance suite 21/21 re-executed from the clone at `2ca50cd…` on 23 November 2026; GitHub Actions WORLD FORGE run #57 at `2ca50cd…` concluded Success (run 45195510417). The commits since are documentation-only.
+Verification at the inventoried commit: WORLD FORGE suite 200/200 and Stage 02 acceptance suite 21/21 re-executed from the clone at `369d02d…` on 23 November 2026 (pass 6). GitHub Actions WORLD FORGE run #57 at `2ca50cd…` concluded Success (run 45195510417); runs are triggered on every push, and conclusions for the documentation-only commits since are recorded in the register as they are read back.
 
 | File | Bytes |
 | --- | ---: |
 | `.github/workflows/g2-backend-evidence.yml` | 2,642 |
 | `.github/workflows/world-forge-tests.yml` | 320 |
 | `.gitignore` | 41 |
-| `README.md` | 4,276 |
+| `README.md` | 4,473 |
 | `apps/see-my-world/.gitignore` | 77 |
 | `apps/see-my-world/README.md` | 3,942 |
 | `apps/see-my-world/package.json` | 263 |
@@ -26,13 +26,14 @@ Verification at the inventoried commit's parent line: WORLD FORGE suite 200/200 
 | `apps/see-my-world/test/helpers/dump-state.mjs` | 635 |
 | `apps/see-my-world/test/helpers/visitor-probe.mjs` | 1,086 |
 | `apps/see-my-world/test/helpers/wal-writer.mjs` | 580 |
+| `docs/MASTER-INDEX.md` | 3,211 |
 | `docs/architecture/AI-DEVELOPMENT-ORGANIZATION.md` | 47,488 |
 | `docs/architecture/CORE-MVP-PRD.md` | 72,950 |
 | `docs/architecture/MERIDIAN-PROTOTYPE-REQUIREMENTS.md` | 53,660 |
 | `docs/architecture/SCOPE-EXCLUSION-LIST.md` | 44,793 |
 | `docs/decisions/EDITION-1.3-AMENDMENT-REGISTER.md` | 36,529 |
 | `docs/decisions/EDITION-1.4-AMENDMENT-REGISTER.md` | 43,759 |
-| `docs/decisions/EDITION-1.5-AMENDMENT-REGISTER.md` | 89,157 |
+| `docs/decisions/EDITION-1.5-AMENDMENT-REGISTER.md` | 92,359 |
 | `docs/decisions/FOUNDER_DECISION_REGISTER.md` | 24,991 |
 | `docs/decisions/STAGE-03-CHARTER-A51.md` | 18,356 |
 | `docs/product-bible/SEE-MY-WORLD-Product-Bible-Edition-1.4.md` | 769,512 |
@@ -90,6 +91,7 @@ Verification at the inventoried commit's parent line: WORLD FORGE suite 200/200 
 | `docs/stage-03/D03-04-TERMINOLOGY-BOUNDARY-SPEC.md` | 53,581 |
 | `docs/stage-03/G1-REMEDIATION-REPORT.md` | 25,870 |
 | `docs/stage-03/G1-WORK-PACKAGE-1-REPORT.md` | 15,778 |
+| `docs/stage-03/GATE-STATUS.md` | 4,240 |
 | `docs/stage-03/design-boards/board-00-design-system-overview.jpg` | 466,989 |
 | `docs/stage-03/design-boards/board-pass04-experience-suite.jpg` | 521,203 |
 | `docs/stage-03/design-boards/board-pass05-lens-permissions.jpg` | 445,958 |
@@ -111,7 +113,7 @@ Verification at the inventoried commit's parent line: WORLD FORGE suite 200/200 
 | `docs/verification/MASTER_DEVELOPMENT_ROADMAP.md` | 15,841 |
 | `docs/verification/MVP_SCOPE.md` | 12,303 |
 | `docs/verification/PROJECT_STATE_AUDIT.md` | 20,269 |
-| `docs/verification/REPOSITORY-INVENTORY.md` | 13,529 |
+| `docs/verification/REPOSITORY-INVENTORY.md` | 13,655 |
 | `docs/verification/SLICE-BUILD-REPORT.md` | 15,152 |
 | `docs/verification/TAILS-VERIFICATION.md` | 24,367 |
 | `docs/verification/TEST_BASELINE.md` | 8,360 |
@@ -212,4 +214,4 @@ Verification at the inventoried commit's parent line: WORLD FORGE suite 200/200 
 | `world-forge/world-forge-v1.1/tests/server.test.js` | 1,345 |
 | `world-forge/world-forge-v1.1/tests/store.test.js` | 2,356 |
 
-Total: **203 files, 20,524,276 bytes** at `3e38236bfd5a…`. This file itself is updated in the commit following the one inventoried.
+Total: **205 files, 20,535,252 bytes** at `369d02dbe28c…`. This file itself is updated in the commit following the one inventoried.
