@@ -1,10 +1,10 @@
 # Repository Inventory — SEE MY WORLD
 
-**As of commit:** `369d02dbe28ca6a35b2d7ee1267b4f036c93c7ae` (54 commits on main)
-**Generated:** 23 November 2026, from the canonical local clone (`git ls-files` + working-tree sizes), under register A-75/A-79 (development pass 6 refresh; supersedes the pass-4 inventory at `3e38236…`).
-**Contents:** 205 tracked files, 20,535,252 bytes total.
+**As of commit:** `0301d64d46d0096c96e93e0691e312003743adbb` (61 commits on main)
+**Generated:** 23 November 2026, from the canonical local clone (`git ls-files` + working-tree sizes), under register A-75/A-82 (development pass 9 refresh; supersedes the pass-6 inventory at `369d02d…`).
+**Contents:** 209 tracked files, 20,556,298 bytes total.
 
-Verification at the inventoried commit: WORLD FORGE suite 200/200 and Stage 02 acceptance suite 21/21 re-executed from the clone at `369d02d…` on 23 November 2026 (pass 6). GitHub Actions WORLD FORGE run #57 at `2ca50cd…` concluded Success (run 45195510417); runs are triggered on every push, and conclusions for the documentation-only commits since are recorded in the register as they are read back.
+Verification standing: WORLD FORGE suite 200/200 and Stage 02 acceptance suite 21/21 verified from the clone at `369d02d…` (pass 6); the CI configuration bumped to actions v5 at `83c7784…` with its first run concluding Success (pass 7); commits since are documentation and filings only.
 
 | File | Bytes |
 | --- | ---: |
@@ -33,7 +33,7 @@ Verification at the inventoried commit: WORLD FORGE suite 200/200 and Stage 02 a
 | `docs/architecture/SCOPE-EXCLUSION-LIST.md` | 44,793 |
 | `docs/decisions/EDITION-1.3-AMENDMENT-REGISTER.md` | 36,529 |
 | `docs/decisions/EDITION-1.4-AMENDMENT-REGISTER.md` | 43,759 |
-| `docs/decisions/EDITION-1.5-AMENDMENT-REGISTER.md` | 92,359 |
+| `docs/decisions/EDITION-1.5-AMENDMENT-REGISTER.md` | 94,567 |
 | `docs/decisions/FOUNDER_DECISION_REGISTER.md` | 24,991 |
 | `docs/decisions/STAGE-03-CHARTER-A51.md` | 18,356 |
 | `docs/product-bible/SEE-MY-WORLD-Product-Bible-Edition-1.4.md` | 769,512 |
@@ -80,10 +80,13 @@ Verification at the inventoried commit: WORLD FORGE suite 200/200 and Stage 02 a
 | `docs/product-bible/sources/PARAVEX_UNIFIED_MASTER_PRODUCT_BIBLE_INTEGRATED_EDITION_59.pdf` | 2,160,046 |
 | `docs/product-bible/sources/PARAVEX_Unified_Master_Product_Bible_Edition_60_COMPLETE.pdf` | 2,041,732 |
 | `docs/product-bible/sources/PARAVEX_Unified_Master_Product_Bible_Social_Universe_Source_v58.pdf` | 2,493,214 |
+| `docs/product-bible/sources/PASS8-FILING-NOTE.md` | 1,315 |
 | `docs/product-bible/sources/SEE-MY-WORLD-Product-Bible-Edition-1.2.md` | 235,015 |
 | `docs/product-bible/sources/SEE-MY-WORLD-Product-Bible-Edition-1.2.pdf` | 438,668 |
 | `docs/product-bible/sources/SEE-MY-WORLD-Product-Bible-Edition-1.3.md` | 554,961 |
 | `docs/product-bible/sources/SEE-MY-WORLD-Product-Bible-Edition-1.3.pdf` | 896,836 |
+| `docs/product-bible/sources/STAGE-02-CONTINUATION-62-RECONCILIATION.md` | 5,311 |
+| `docs/product-bible/sources/STAGE-02-CONTINUATION-63-REVIEW-PROTOCOL.md` | 2,641 |
 | `docs/product-bible/sources/STANDALONE-DRAFTS-FILING-NOTE.md` | 1,094 |
 | `docs/stage-03/D03-01-TRACEABILITY-MATRIX.md` | 49,288 |
 | `docs/stage-03/D03-02-SCREEN-INVENTORY.md` | 89,913 |
@@ -91,7 +94,8 @@ Verification at the inventoried commit: WORLD FORGE suite 200/200 and Stage 02 a
 | `docs/stage-03/D03-04-TERMINOLOGY-BOUNDARY-SPEC.md` | 53,581 |
 | `docs/stage-03/G1-REMEDIATION-REPORT.md` | 25,870 |
 | `docs/stage-03/G1-WORK-PACKAGE-1-REPORT.md` | 15,778 |
-| `docs/stage-03/GATE-STATUS.md` | 4,240 |
+| `docs/stage-03/G2-WORK-ORDERS-PROPOSED.md` | 9,264 |
+| `docs/stage-03/GATE-STATUS.md` | 4,373 |
 | `docs/stage-03/design-boards/board-00-design-system-overview.jpg` | 466,989 |
 | `docs/stage-03/design-boards/board-pass04-experience-suite.jpg` | 521,203 |
 | `docs/stage-03/design-boards/board-pass05-lens-permissions.jpg` | 445,958 |
@@ -113,7 +117,7 @@ Verification at the inventoried commit: WORLD FORGE suite 200/200 and Stage 02 a
 | `docs/verification/MASTER_DEVELOPMENT_ROADMAP.md` | 15,841 |
 | `docs/verification/MVP_SCOPE.md` | 12,303 |
 | `docs/verification/PROJECT_STATE_AUDIT.md` | 20,269 |
-| `docs/verification/REPOSITORY-INVENTORY.md` | 13,655 |
+| `docs/verification/REPOSITORY-INVENTORY.md` | 13,829 |
 | `docs/verification/SLICE-BUILD-REPORT.md` | 15,152 |
 | `docs/verification/TAILS-VERIFICATION.md` | 24,367 |
 | `docs/verification/TEST_BASELINE.md` | 8,360 |
@@ -214,4 +218,4 @@ Verification at the inventoried commit: WORLD FORGE suite 200/200 and Stage 02 a
 | `world-forge/world-forge-v1.1/tests/server.test.js` | 1,345 |
 | `world-forge/world-forge-v1.1/tests/store.test.js` | 2,356 |
 
-Total: **205 files, 20,535,252 bytes** at `369d02dbe28c…`. This file itself is updated in the commit following the one inventoried.
+Total: **209 files, 20,556,298 bytes** at `0301d64d46d0…`. This file itself is updated in the commit following the one inventoried.
