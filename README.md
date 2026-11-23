@@ -9,9 +9,10 @@ Perspectives, and explored by visitors without surveillance.
 
 ## The one distinction this repository never blurs
 
-- **The product is greenfield.** No SEE MY WORLD product code exists yet.
-  Everything the Bible describes is specification — Concept or Specified,
-  never silently "Implemented."
+- **The product has a foundation, not a platform.** The Stage 02 vertical
+  slice — the first controlled implementation — is implemented, accepted,
+  and frozen in `apps/see-my-world/`. Everything beyond the slice is
+  specification — Concept or Specified, never silently "Implemented."
 - **WORLD FORGE is real.** The AI development factory that will build the
   product exists as a working, locally tested prototype in `world-forge/`.
 
@@ -27,8 +28,9 @@ automated tests*, *verified against a live runtime* — is maintained in
 | `docs/architecture/` | The AI Development Organization plan and the Stage 02 requirements package (Core MVP PRD, Meridian prototype requirements, scope exclusion list) — proposals, not enacted scope |
 | `docs/decisions/` | The amendment registers (the project's change record) and the Phase Zero founder-decision register — 44 open items, positions recorded, none decided by anyone but the Founder |
 | `docs/verification/` | The development-status document and the Phase Zero audit deliverables, including the recovered-tails verification |
+| `docs/stage-03/` | Stage 03 evidence: the accepted G1 package (D03-01…D03-04, register A-57) and the G3 design package with its design boards (E1 — G3 gate acceptance pending) |
 | `world-forge/` | WORLD FORGE — the development factory. `src/`, `tests/`, `public/` (Founder Dashboard), `config/` (24 specialist definitions), `integration/` (opt-in live Docker acceptance harnesses). Verified baseline: v3.6 |
-| `apps/see-my-world/` | The product application will live here. Currently an honest placeholder: greenfield |
+| `apps/see-my-world/` | The accepted Stage 02 vertical slice — frozen baseline (A-49). The broader product remains specification |
 | `.github/workflows/` | CI — the WORLD FORGE test suite runs on every push |
 
 ## Working rules (from the Product Bible and the Universal AI Agent Contract)
