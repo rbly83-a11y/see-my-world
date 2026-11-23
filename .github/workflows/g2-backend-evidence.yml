@@ -1,0 +1,60 @@
+# Founder-authorized verification-only proposal. Manual dispatch; no deployment.
+name: PARAVEX G2 backend evidence (manual)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g2-backend-evidence-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Check out immutable application baseline
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 83a300f1c658c1730fc01e6dc0efdc1dce978bf4
+          path: baseline
+          persist-credentials: false
+      - name: Check out proposed verification tooling
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          path: tooling
+          persist-credentials: false
+      - name: Verify approved source baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C baseline rev-parse HEAD)" = '83a300f1c658c1730fc01e6dc0efdc1dce978bf4'
+          test -z "$(git -C baseline status --porcelain --untracked-files=no)"
+      - name: Install Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.16.0'
+      - name: Check supplementary test source
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f tooling/verification/g2/pass143_backend_extra.test.mjs
+          node --check tooling/verification/g2/pass143_backend_extra.test.mjs
+      - name: Execute isolated backend suites
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/paravex-g2-evidence"
+          cp tooling/verification/g2/pass143_backend_extra.test.mjs "$RUNNER_TEMP/pass143_backend_extra.test.mjs"
+          cp tooling/verification/g2/pass150_evidence_validator.py "$RUNNER_TEMP/pass150_evidence_validator.py"
+          cp tooling/verification/g2/pass150_tap_validator.py "$RUNNER_TEMP/pass150_tap_validator.py"
+          cp tooling/verification/g2/pass151_verify_g2.sh "$RUNNER_TEMP/pass151_verify_g2.sh"
+          chmod +x "$RUNNER_TEMP/pass151_verify_g2.sh"
+          "$RUNNER_TEMP/pass151_verify_g2.sh" "$GITHUB_WORKSPACE/baseline" "$RUNNER_TEMP/pass143_backend_extra.test.mjs" "$RUNNER_TEMP/paravex-g2-evidence"
+      - name: Upload test evidence (including failures)
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: g2-backend-evidence-${{ github.run_id }}
+          path: ${{ runner.temp }}/paravex-g2-evidence/
+          if-no-files-found: warn
+          retention-days: 14
